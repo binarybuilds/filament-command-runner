@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CommandRun extends Model
 {
     protected $fillable = [
-        'command', 'ran_by'
+        'command', 'ran_by',
     ];
 
     public function getTable()

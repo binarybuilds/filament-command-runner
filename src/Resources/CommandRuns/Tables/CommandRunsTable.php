@@ -61,7 +61,7 @@ class CommandRunsTable
                             return 'RUNNING';
                         }
 
-                        if (!is_null($command->killed_at)) {
+                        if (! is_null($command->killed_at)) {
                             return 'KILLED';
                         }
 

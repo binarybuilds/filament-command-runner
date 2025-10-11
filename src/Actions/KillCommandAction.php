@@ -47,6 +47,7 @@ class KillCommandAction extends Action
                 } catch (\Throwable $exception) {
                     $action->failureNotificationTitle($exception->getMessage());
                     $action->failure();
+
                     return false;
                 }
             });
