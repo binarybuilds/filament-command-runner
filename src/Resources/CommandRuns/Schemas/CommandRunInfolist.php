@@ -43,11 +43,11 @@ class CommandRunInfolist
                             return 'RUNNING';
                         }
 
-                        if (!is_null($command->killed_at)) {
+                        if (! is_null($command->killed_at)) {
                             return 'KILLED';
                         }
 
-                        return ((int)$command->exit_code) === 0 ? 'SUCCESS' : 'FAILED';
+                        return ((int) $command->exit_code) === 0 ? 'SUCCESS' : 'FAILED';
 
                     })->badge()
                     ->color(fn (string $state): string => match ($state) {

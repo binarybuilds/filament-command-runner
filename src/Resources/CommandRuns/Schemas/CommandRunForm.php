@@ -3,9 +3,9 @@
 namespace BinaryBuilds\CommandRunner\Resources\CommandRuns\Schemas;
 
 use BinaryBuilds\CommandRunner\CommandRunnerPlugin;
+use Closure;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
-use Closure;
 
 class CommandRunForm
 {

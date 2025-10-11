@@ -27,6 +27,7 @@ class CommandRunnerPlugin implements Plugin
     public function canDeleteCommandHistory(callable | bool $deleteHistory): CommandRunnerPlugin
     {
         $this->deleteHistory = $deleteHistory;
+
         return $this;
     }
 

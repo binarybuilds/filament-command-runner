@@ -2,9 +2,8 @@
 
 namespace BinaryBuilds\CommandRunner\Resources\CommandRuns\Pages;
 
-
-use Filament\Resources\Pages\ListRecords;
 use BinaryBuilds\CommandRunner\Resources\CommandRuns\CommandRunResource;
+use Filament\Resources\Pages\ListRecords;
 
 class ListCommandRuns extends ListRecords
 {
