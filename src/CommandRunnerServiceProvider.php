@@ -17,7 +17,6 @@ class CommandRunnerServiceProvider extends PackageServiceProvider
     {
         $package->name(static::$name)
             ->hasConfigFile()
-            ->runsMigrations()
             ->hasMigration('2025_10_09_001423_create_command_runs_table')
             ->hasCommands([
                 CaptureCommandStatus::class,

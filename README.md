@@ -12,6 +12,7 @@
 `filament-command-runner` is a [Filament](https://filamentphp.com) plugin that allows users to run artisan and shell commands directly from the Filament admin panel. All commands are executed in the background so users don't have to wait for them to finish. They can return later to view the output or optionally terminate a running command midway.
 
 The plugin also keeps a detailed history of past runs including:
+
 - Command executed
 - User who initiated the run
 - Start time
@@ -20,6 +21,7 @@ The plugin also keeps a detailed history of past runs including:
 - Command output
 
 ## Screenshots
+
 ![Command Index](resources/screenshots/command-runner-index.png)
 ![Command Run](resources/screenshots/command-runner-run-command.png)
 ![Command Running](resources/screenshots/command-runner-running.png)
@@ -45,10 +47,26 @@ $panel->plugin(CommandRunnerPlugin::make());
 
 ```
 
+## Migrations
+
+You should publish the migration for the package and adjust it to fit your project' structure:
+
+```php
+php artisan vendor:publish --tag=command-runner-migrations
+```
+
+Before running the migrations, if you are using `UUID` or `ULID`, consider adjusting the `ran_by` field to store `string` instead of `unsignedBigInteger`. Feel free to adjust `$table->id()` field if needed. Once appropiate, run the migrations command:
+
+```
+php artisan migrate
+```
+
 ## Customizations
+
 1. Command Validation
 
 You can define custom validation logic using the validateCommand() method. This is useful for restricting which commands can be run:
+
 ```php
 use Illuminate\Support\Str;
 
@@ -64,6 +82,7 @@ $panel->plugin(
 2. Delete Command History
 
 Control who can delete command history entries using a boolean or closure with `canDeleteCommandHistory()`:
+
 ```php
 $panel->plugin(
     CommandRunnerPlugin::make()->canDeleteCommandHistory(fn ($user) => $user->isAdmin())
@@ -77,10 +96,13 @@ Schedule the following artisan command to purge command history entries daily:
 ```bash
 php artisan command-runner:purge-history
 ```
+
 By default, it removes command runs older than **30 days**. You can specify a custom duration like this:
+
 ```bash
 php artisan command-runner:purge-history 7
 ```
+
 This example will purge command runs older than **7 days**.
 
 ## Testing
