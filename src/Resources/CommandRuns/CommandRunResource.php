@@ -2,6 +2,8 @@
 
 namespace BinaryBuilds\CommandRunner\Resources\CommandRuns;
 
+use BackedEnum;
+use BinaryBuilds\CommandRunner\CommandRunnerPlugin;
 use BinaryBuilds\CommandRunner\Models\CommandRun;
 use BinaryBuilds\CommandRunner\Resources\CommandRuns\Pages\ListCommandRuns;
 use BinaryBuilds\CommandRunner\Resources\CommandRuns\Pages\RunCommand;
@@ -13,14 +15,40 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class CommandRunResource extends Resource
 {
     protected static ?string $slug = 'command-runner';
 
+    protected static function getPlugin(): CommandRunnerPlugin
+    {
+        return CommandRunnerPlugin::get();
+    }
+
     public static function getNavigationLabel(): string
     {
-        return __('Command Runner');
+        return static::getPlugin()->getNavigationLabel();
+    }
+
+    public static function canAccess(): bool
+    {
+        return static::getPlugin()->isAuthorized();
+    }
+
+    public static function getNavigationGroup(): string | UnitEnum | null
+    {
+        return static::getPlugin()->getNavigationGroup();
+    }
+
+    public static function getNavigationSort(): ?int
+    {
+        return static::getPlugin()->getNavigationSort();
+    }
+
+    public static function getNavigationIcon(): string | BackedEnum | Heroicon | null
+    {
+        return static::getPlugin()->getNavigationIcon();
     }
 
     public static function getBreadcrumb(): string
@@ -29,8 +57,6 @@ class CommandRunResource extends Resource
     }
 
     protected static ?string $model = CommandRun::class;
-
-    protected static string | null | \BackedEnum $navigationIcon = Heroicon::OutlinedCommandLine;
 
     public static function infolist(Schema $schema): Schema
     {
