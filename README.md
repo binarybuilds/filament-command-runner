@@ -28,12 +28,28 @@ The plugin also keeps a detailed history of past runs including:
 ![Kill Command](resources/screenshots/command-runner-kill-command.png)
 ![Command Output](resources/screenshots/command-runner-command-output.png)
 
-## Installation
+## 1. Installation
+
+#### 1.1 Install Package
 
 You can install the plugin via composer:
 
 ```bash
 composer require binarybuilds/filament-command-runner
+```
+
+#### 1.2 Publish Migrations
+
+You should publish the migration for the package and adjust it to fit your project's structure:
+
+```php
+php artisan vendor:publish --tag=command-runner-migrations
+```
+
+Before running the migrations, if you are using `UUID` or `ULID`, consider adjusting the `ran_by` field to store `string` instead of `unsignedBigInteger`. Feel free to adjust `$table->id()` field if needed. Once appropriate, run the migrations command:
+
+```
+php artisan migrate
 ```
 
 ## Usage
@@ -45,20 +61,6 @@ use BinaryBuilds\CommandRunner\CommandRunnerPlugin;
 
 $panel->plugin(CommandRunnerPlugin::make());
 
-```
-
-## Migrations
-
-You should publish the migration for the package and adjust it to fit your project' structure:
-
-```php
-php artisan vendor:publish --tag=command-runner-migrations
-```
-
-Before running the migrations, if you are using `UUID` or `ULID`, consider adjusting the `ran_by` field to store `string` instead of `unsignedBigInteger`. Feel free to adjust `$table->id()` field if needed. Once appropiate, run the migrations command:
-
-```
-php artisan migrate
 ```
 
 ## Customizations

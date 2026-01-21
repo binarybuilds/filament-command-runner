@@ -81,9 +81,6 @@ class RunCommand extends CreateRecord
 
         $commandString = Str::replace('php', '"' . php_binary() . '"', $command->command);
 
-        //        return
-        //            '('.Str::replace('php', '"'.php_binary().'"', $command->command).' >> '.$logFile.' 2>&1 ; '.$finished.' "$?") 2>&1 &';
-
         if (windows_os()) {
             return 'powershell -NoProfile -Command "$p = Start-Process cmd -ArgumentList '
                 . escapeshellarg('/c '
