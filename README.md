@@ -65,7 +65,48 @@ $panel->plugin(CommandRunnerPlugin::make());
 
 ## Customizations
 
-1. Command Validation
+### 1. Authorization
+
+You can restrict access to this plugin using the `authorize` method. This accepts a boolean or a closure that returns a boolean.
+
+```php
+CommandRunnerPlugin::make()->authorize(fn () => auth()->user()->can('view-command-runner'))
+```
+
+### 2. Navigation Group
+
+You can change the navigation group using the `navigationGroup` method. This accepts a string, `UnitEnum`.
+
+```php
+CommandRunnerPlugin::make()->navigationGroup('System')
+```
+
+### 3. Navigation Label
+
+You can customize the navigation label using the `navigationLabel` method.
+
+```php
+CommandRunnerPlugin::make()->navigationLabel('Command Runner')
+```
+
+### 4. Navigation Icon
+
+You can change the navigation icon using the `navigationIcon` method. This accepts a Heroicon string or a `Heroicon` enum value.
+
+```php
+CommandRunnerPlugin::make()->navigationIcon('heroicon-o-exclamation-triangle')
+```
+
+### 5. Navigation Sort Order
+
+You can change the navigation sort order using the `navigationSort` method.
+
+```php
+CommandRunnerPlugin::make()->navigationSort(10)
+```
+
+
+### 6. Command Validation
 
 You can define custom validation logic using the validateCommand() method. This is useful for restricting which commands can be run:
 
@@ -81,7 +122,7 @@ $panel->plugin(
 );
 ```
 
-2. Delete Command History
+### 7. Delete Command History
 
 Control who can delete command history entries using a boolean or closure with `canDeleteCommandHistory()`:
 
@@ -91,7 +132,7 @@ $panel->plugin(
 );
 ```
 
-3. Purge Old Command History
+### 8. Purge Old Command History
 
 Schedule the following artisan command to purge command history entries daily:
 
