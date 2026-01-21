@@ -2,14 +2,14 @@
 
 namespace BinaryBuilds\CommandRunner;
 
+use BackedEnum;
 use BinaryBuilds\CommandRunner\Resources\CommandRuns\CommandRunResource;
+use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Filament\Support\Concerns\EvaluatesClosures;
 use Filament\Support\Icons\Heroicon;
 use UnitEnum;
-use BackedEnum;
-use Closure;
-use Filament\Support\Concerns\EvaluatesClosures;
 
 class CommandRunnerPlugin implements Plugin
 {

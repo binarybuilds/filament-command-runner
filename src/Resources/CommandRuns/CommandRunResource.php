@@ -2,6 +2,8 @@
 
 namespace BinaryBuilds\CommandRunner\Resources\CommandRuns;
 
+use BackedEnum;
+use BinaryBuilds\CommandRunner\CommandRunnerPlugin;
 use BinaryBuilds\CommandRunner\Models\CommandRun;
 use BinaryBuilds\CommandRunner\Resources\CommandRuns\Pages\ListCommandRuns;
 use BinaryBuilds\CommandRunner\Resources\CommandRuns\Pages\RunCommand;
@@ -13,9 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use BinaryBuilds\CommandRunner\CommandRunnerPlugin;
 use UnitEnum;
-use BackedEnum;
 
 class CommandRunResource extends Resource
 {
